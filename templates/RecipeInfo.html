@@ -1,0 +1,19 @@
+{% extends "LayoutFile.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block sectionheader %}Your random recipe!{% endblock %}
+
+{% block sectioncontent %}
+<h2>{{ recipeData['title'] }}</h2>
+<img style="max-width: 500px;" src="{{ recipeData['image'] }}">
+
+<p style="padding-top:30px;">Your ingredients are:</p>
+<ul>
+    {% for ingredient in recipeData['missedIngredients'] %}
+        <li>{{ ingredient['original'] }}</li>
+    {% endfor %}
+    {% for ingredient in recipeData['usedIngredients'] %}
+        <li>{{ ingredient['original'] }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "LayoutFile.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block sectionheader %}What ingredients do you have?!{% endblock %}
+
+{% block sectioncontent %}
+<p>In order to search for a recipe, please type a list of ingredients below, separated by commas.</p>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p style='color:red;'>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<form method="POST" enctype="multipart/form-data" action="{{ url_for('home') }}" novalidate>
+    {{ wtf.quick_form(form, novalidate=True) }}
+</form>
+{% endblock %}
